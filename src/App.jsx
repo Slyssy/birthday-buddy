@@ -1,6 +1,23 @@
+import { useState } from 'react';
+import List from './assets/components/List';
 import data from './data.js';
 const App = () => {
-  console.log(data);
-  return <h2>Birthday Reminder - Starter</h2>;
+  const [people, setPeople] = useState(data);
+  console.log(people);
+  return (
+    <main>
+      <section className='container'>
+        <h3>{people.length} birthdays today.</h3>
+        <List people={people} />
+        <button
+          type='button'
+          className='btn btn-block'
+          onClick={() => setPeople([])}
+        >
+          Clear List
+        </button>
+      </section>
+    </main>
+  );
 };
 export default App;
